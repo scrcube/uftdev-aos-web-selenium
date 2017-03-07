@@ -46,11 +46,19 @@ public class SeleniumTest  {
 
         WebDriver driver = new InternetExplorerDriver();
         driver.get("http://www.advantageonlineshopping.com:8080/#/");
-
+        driver.manage().window().maximize();
         WebDriverWait wait = new WebDriverWait(driver,10);
-        wait.until(ExpectedConditions.elementToBeClickable(By.visibleText("TABLETS")));
-        driver.findElement(By.visibleText("TABLETS")).click();
 
-        driver.close();
+        //Click on Tablets
+        wait.until(ExpectedConditions.elementToBeClickable(By.visibleText("TABLETS")));
+        driver.findElement(By.id("TabletsImg")).click();
+
+        //Click on specific tablet
+        wait.until(ExpectedConditions.elementToBeClickable(By.visibleText("HP Pro Tablet 608 G1")));
+        driver.findElement(By.visibleText("HP Pro Tablet 608 G1")).click();
+
+        //Clean up and dispose of the driver
+        //Good explanation of close, quit, dispose here http://stackoverflow.com/questions/15067107/difference-between-webdriver-dispose-close-and-quit
+        driver.quit();
     }
 }
