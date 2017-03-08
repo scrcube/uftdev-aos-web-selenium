@@ -4,9 +4,10 @@ This project assumes you have followed the LeanFT set up instructions found on h
 
 For adding to a local .m2 cache when these jars are not on your internal maven repo, I use the following lines either from a command line or from with in the terminal window (in my case the IntelliJ Terminal window)
 
-mvn install:install-file -Dfile="C:\Program Files (x86)\HP\Unified Functional Testing\SDK\Java\com.hp.lft.reportbuilder-standalone.jar" -DgroupId=com.hp.lft -DartifactId=reportbuilder -Dversion=14.0.0 -Dpackaging=jar
+mvn install:install-file -Dfile="C:\Program Files (x86)\HP\Unified Functional Testing\Selenium SDK\Java\com.hpe.lft.selenium.jar" -DgroupId=com.hpe.lft -DartifactId=selenium-sdk -Dversion=14.0.0 -Dpackaging=jar
 
-mvn install:install-file -Dfile="C:\Program Files (x86)\HP\Unified Functional Testing\SDK\Java\com.hp.lft.reportbuilder-standalone.jar" -DgroupId=com.hp.lft -DartifactId=reportbuilder -Dversion=14.0.0 -Dpackaging=jar
+mvn install:install-file -Dfile="C:\Program Files (x86)\HP\Unified Functional Testing\Selenium SDK\Java\com.hpe.lft.selenium-javadoc.jar" -DgroupId=com.hpe.lft -DartifactId=selenium-sdk -Dversion=14.0.0 -Dpackaging=jar -Dclassifier=Javadoc
+
 
 And you should already see this in your pom.xml if you created the project from the templates
 
