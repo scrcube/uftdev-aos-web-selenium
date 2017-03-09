@@ -27,7 +27,6 @@ And you should already see this in your pom.xml if you created the project from 
 ```
 
 #### Note for execution from command line
-java -cp .;junit-<ver>.jar;jamcrest-core-<ver>.jar;presales-1.0-SNAPSHOT.jar org.junit.runner.JUnitCore net.hpe.presales.SeleniumTest
 java -cp .;junit-4.12.jar;presales-1.0-SNAPSHOT.jar;hamcrest-core-1.3.jar;selenium-server-standalone-2.53.1.jar;com.hpe.lft.selenium.jar org.junit.runner.JUnitCore net.hpe.presales.SeleniumTest
 
 The above assumes:
