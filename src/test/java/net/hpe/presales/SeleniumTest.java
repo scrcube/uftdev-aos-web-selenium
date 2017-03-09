@@ -52,9 +52,11 @@ public class SeleniumTest  {
         driver.findElement(By.id("TabletsImg")).click();
 
         //Click on specific tablet
+        Thread.sleep(3000);
         wait.until(ExpectedConditions.elementToBeClickable(By.visibleText("HP Pro Tablet 608 G1")));
         driver.findElement(By.visibleText("HP Pro Tablet 608 G1")).click();
 
+        Thread.sleep(10000);
         //Clean up and dispose of the driver
         //Good explanation of close, quit, dispose here http://stackoverflow.com/questions/15067107/difference-between-webdriver-dispose-close-and-quit
         driver.quit();
