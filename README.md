@@ -25,3 +25,10 @@ And you should already see this in your pom.xml if you created the project from 
      <version>14.0.0</version>
 <dependency>
 ```
+
+#### Note for execution from command line
+java -cp .;junit-<ver>.jar;jamcrest-core-<ver>.jar;presales-1.0-SNAPSHOT.jar org.junit.runner.JUnitCore net.hpe.presales.SeleniumTest
+
+The above assumes:
+- you have done a maven deploy goal
+- all the relavant *.jar files are in the same directory
