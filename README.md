@@ -32,3 +32,5 @@ java -cp .;junit-4.12.jar;presales-1.0-SNAPSHOT.jar;hamcrest-core-1.3.jar;seleni
 The above assumes:
 - you have done a maven deploy goal
 - all the relavant *.jar files are in the same directory
+- to get junit.jar and hamcrest-core.jar if not on your system already https://github.com/junit-team/junit4/wiki/Download-and-Install
+
