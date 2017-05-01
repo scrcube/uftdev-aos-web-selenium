@@ -34,6 +34,11 @@
                     <name>Your repository's name</name>
                     <url>URL of the repository containing the LeanFT jar files</url>
             </repository>-->
+        <repository>
+            <id>nexus-container</id>
+            <!-- <url>http://dockerserver:9001/nexus/content/repositories/releases</url> -->
+            <url>http://dockerserver:9001/nexus/content/groups/public/</url>
+        </repository>
     </repositories>
 
     <build>
