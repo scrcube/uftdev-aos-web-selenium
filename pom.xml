@@ -65,4 +65,12 @@
             </plugin>
         </plugins>
     </build>
+    <profiles>
+        <profile>
+            <id>Exe-Profile</id>
+            <properties>
+                <test.src.dir>src/main/java</test.src.dir>
+            </properties>
+        </profile>
+    </profiles>
 </project>
