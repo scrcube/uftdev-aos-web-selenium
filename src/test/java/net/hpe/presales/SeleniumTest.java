@@ -66,6 +66,7 @@ public class SeleniumTest  {
         Utils.highlight(driver.findElement(By.visibleText("HP Pro Tablet 608 G1")), 1000);
         driver.findElement(By.visibleText("HP Pro Tablet 608 G1")).click();
 
+        //Added sleep here to give time to see the selection
         Thread.sleep(3000);
     }
 }
