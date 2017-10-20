@@ -39,6 +39,20 @@ The script has been modified to make use of the released version of the com.hpe.
      <version>RELEASE</version>
 <dependency>
 ```
+
+### getDrivers.sh
+The getDrivers.sh is a small utility to aid in getting the selenium driver required for this script.  This script was created to use the Selenium Chrome driver and as of the time of this writing, the driver 2.27 was the last driver version tested to work.
+
+The script assumes your chromedriver is in the /opt/selenium/<VER> folder.  If you will be placing it in a folder other than that, then you will need to edit the test.
+
+To use the getDriver.sh, create the directory /opt/selenium and copy getDriver.sh to the folder and then run:
+
+```
+./getDrivers.sh 2.27
+```
+
+If you are using the IntelliJ container to run this test, you will need to perform the above steps inside the IntelliJ container.
+
 #### Note for execution from command line
 java -cp .;junit-4.12.jar;presales-1.0-SNAPSHOT.jar;hamcrest-core-1.3.jar;selenium-server-standalone-2.53.1.jar;com.hpe.lft.selenium.jar org.junit.runner.JUnitCore SeleniumTest
 
