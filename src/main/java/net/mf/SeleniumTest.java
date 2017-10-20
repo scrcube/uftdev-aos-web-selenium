@@ -29,6 +29,7 @@ public class SeleniumTest  {
 
     @BeforeClass
     public static void setUpBeforeClass() throws Exception {
+        System.setProperty("webdriver.chrome.driver", "/opt/selenium/2.27/chromedriver");
         driver = new ChromeDriver();
     }
 
