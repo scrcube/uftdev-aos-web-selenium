@@ -15,9 +15,9 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import java.util.regex.Pattern;
 
 public class SeleniumTest  {
-    static final String ADV_WEBSITE  = "insert website here";
-    static final String ADV_LOGIN    = "insert login name here";
-    static final String ADV_PASSWORD = "insert password here";
+    private static final String ADV_WEBSITE  = "insert website here";
+    private static final String ADV_LOGIN    = "insert login name here";
+    private static final String ADV_PASSWORD = "insert password here";
 
     private static WebDriver driver;
     public SeleniumTest() {
