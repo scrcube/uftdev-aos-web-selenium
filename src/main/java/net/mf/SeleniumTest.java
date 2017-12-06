@@ -12,6 +12,13 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
+// added to access the LeanFT reporting capabilities
+import com.hp.lft.sdk.*;
+import com.hp.lft.report.*;
+
+import java.awt.image.RenderedImage;
+import java.net.URI;
+
 import java.util.regex.Pattern;
 
 public class SeleniumTest  {
@@ -28,6 +35,23 @@ public class SeleniumTest  {
     public static void setUpBeforeClass() throws Exception {
         System.setProperty("webdriver.chrome.driver", "/opt/selenium/2.27/chromedriver");
         driver = new ChromeDriver();
+
+        // The following is what is needed to add the LeanFT reporting to your custom test framework.
+        // In this case a basic Selenium enabled test using the Junit framework
+        // This is base on the LeanFT 14.02 release https://admhelp.microfocus.com/leanft/en/latest/HelpCenter/Content/HowTo/CustomFrameworks.htm
+        try{
+            ModifiableSDKConfiguration config = new ModifiableSDKConfiguration();
+            config.setServerAddress(new URI("ws://localhost:5095"));
+            SDK.init(config);
+
+            ModifiableReportConfiguration rptConfig = new ModifiableReportConfiguration();
+            rptConfig.setSnapshotsLevel(CaptureLevel.All);
+            rptConfig.setTitle("Selenium UFT Pro (LeanFT) Run Results");
+            rptConfig.setDescription("Example of incorporating UFT Pro (LeanFT) reporting with tests driven using Selenium automation");
+            Reporter.init(rptConfig);
+        }
+        catch(Exception e){
+        }
     }
 
     @AfterClass
@@ -35,6 +59,12 @@ public class SeleniumTest  {
         //Clean up and dispose of the driver
         //Good explanation of close, quit, dispose here http://stackoverflow.com/questions/15067107/difference-between-webdriver-dispose-close-and-quit
         driver.quit();
+        try {
+            Reporter.generateReport();
+            SDK.cleanup();
+        }
+        catch (Exception e){
+        }
     }
 
     @Before
@@ -48,6 +78,7 @@ public class SeleniumTest  {
     @Test
     public void corndog() throws Exception {
         driver.get(ADV_WEBSITE);
+        Reporter.reportEvent("Open Website", "Opening website: "+ADV_WEBSITE);
 
         driver.manage().window().maximize();
         WebDriverWait wait = new WebDriverWait(driver, 10);
@@ -72,6 +103,8 @@ public class SeleniumTest  {
         //Click on Tablets
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.visibleText("TABLETS")));
         Utils.highlight(driver.findElement(By.visibleText("TABLETS")), 1000);
+        RenderedImage img = Utils.getSnapshot(driver.findElement(By.visibleText("TABLETS")));
+        Reporter.reportEvent("TABLETS","Found", Status.Passed, img);
         driver.findElement(By.visibleText("TABLETS")).click();
 
         //Click on specific tablet
