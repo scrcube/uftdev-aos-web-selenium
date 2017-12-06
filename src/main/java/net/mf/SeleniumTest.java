@@ -41,7 +41,10 @@ public class SeleniumTest  {
             ModifiableSDKConfiguration config = new ModifiableSDKConfiguration();
             config.setServerAddress(new URI("ws://localhost:5095"));
             SDK.init(config);
-            Reporter.init();
+
+            ModifiableReportConfiguration rptConfig = new ModifiableReportConfiguration();
+            rptConfig.setSnapshotsLevel(CaptureLevel.All);
+            Reporter.init(rptConfig);
         }
         catch(Exception e){
         }
@@ -71,6 +74,7 @@ public class SeleniumTest  {
     @Test
     public void corndog() throws Exception {
         driver.get(ADV_WEBSITE);
+        Reporter.reportEvent("Open Website", "Opening website: "+ADV_WEBSITE);
 
         driver.manage().window().maximize();
         WebDriverWait wait = new WebDriverWait(driver, 10);
