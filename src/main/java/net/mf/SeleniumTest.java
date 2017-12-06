@@ -12,6 +12,11 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
+// added to access the LeanFT reporting capabilities
+import com.hp.lft.sdk.*;
+import com.hp.lft.report.*;
+import java.net.URI;
+
 import java.util.regex.Pattern;
 
 public class SeleniumTest  {
@@ -28,6 +33,18 @@ public class SeleniumTest  {
     public static void setUpBeforeClass() throws Exception {
         System.setProperty("webdriver.chrome.driver", "/opt/selenium/2.27/chromedriver");
         driver = new ChromeDriver();
+
+        // The following is what is needed to add the LeanFT reporting to your custom test framework.
+        // In this case a basic Selenium enabled test using the Junit framework
+        // This is base on the LeanFT 14.02 release https://admhelp.microfocus.com/leanft/en/latest/HelpCenter/Content/HowTo/CustomFrameworks.htm
+        try{
+            ModifiableSDKConfiguration config = new ModifiableSDKConfiguration();
+            config.setServerAddress(new URI("ws://localhost:5095"));
+            SDK.init(config);
+            Reporter.init();
+        }
+        catch(Exception e){
+        }
     }
 
     @AfterClass
@@ -35,6 +52,12 @@ public class SeleniumTest  {
         //Clean up and dispose of the driver
         //Good explanation of close, quit, dispose here http://stackoverflow.com/questions/15067107/difference-between-webdriver-dispose-close-and-quit
         driver.quit();
+        try {
+            Reporter.generateReport();
+            SDK.cleanup();
+        }
+        catch (Exception e){
+        }
     }
 
     @Before
