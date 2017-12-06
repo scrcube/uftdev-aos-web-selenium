@@ -15,6 +15,8 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 // added to access the LeanFT reporting capabilities
 import com.hp.lft.sdk.*;
 import com.hp.lft.report.*;
+
+import java.awt.image.RenderedImage;
 import java.net.URI;
 
 import java.util.regex.Pattern;
@@ -44,6 +46,8 @@ public class SeleniumTest  {
 
             ModifiableReportConfiguration rptConfig = new ModifiableReportConfiguration();
             rptConfig.setSnapshotsLevel(CaptureLevel.All);
+            rptConfig.setTitle("Selenium UFT Pro (LeanFT) Run Results");
+            rptConfig.setDescription("Example of incorporating UFT Pro (LeanFT) reporting with tests driven using Selenium automation");
             Reporter.init(rptConfig);
         }
         catch(Exception e){
@@ -99,6 +103,8 @@ public class SeleniumTest  {
         //Click on Tablets
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.visibleText("TABLETS")));
         Utils.highlight(driver.findElement(By.visibleText("TABLETS")), 1000);
+        RenderedImage img = Utils.getSnapshot(driver.findElement(By.visibleText("TABLETS")));
+        Reporter.reportEvent("TABLETS","Found", Status.Passed, img);
         driver.findElement(By.visibleText("TABLETS")).click();
 
         //Click on specific tablet
