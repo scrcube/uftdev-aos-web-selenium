@@ -26,19 +26,30 @@
             <version>RELEASE</version>
         </dependency>
 
+        <!-- for access to the LeanFT reports -->
+        <dependency>
+            <groupId>com.hp.lft</groupId>
+            <artifactId>sdk</artifactId>
+            <version>RELEASE</version>
+        </dependency>
+        <dependency>
+            <groupId>com.hp.lft</groupId>
+            <artifactId>report</artifactId>
+            <version>RELEASE</version>
+        </dependency>
     </dependencies>
 
     <repositories>
-        <!--<repository>
+        <!-- repository>
                 <id>Your repository's ID</id>
                     <name>Your repository's name</name>
                     <url>URL of the repository containing the LeanFT jar files</url>
             </repository>-->
-        <repository>
-            <id>nexus-container</id>
+        <!-- repository>
+            <id>nexus-container</id -->
             <!-- <url>http://dockerserver:9001/nexus/content/repositories/releases</url> -->
-            <url>http://dockerserver:9001/nexus/content/groups/public/</url>
-        </repository>
+            <!-- url>http://dockerserver:9001/nexus/content/groups/public/</url>
+        </repository -->
     </repositories>
 
     <build>
