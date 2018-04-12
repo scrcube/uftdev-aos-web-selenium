@@ -7,35 +7,54 @@
     <name>LeanFT Selenium JUnit Test</name>
     <description>LeanFT Selenium JUnit Test</description>
 
+    <properties>
+        <!-- These were the original versions of the libraries used in development of the script
+        <junit.ver>4.12</junit.ver>
+        <se.ver>2.53.1</se.ver>
+        <se.lft.ver>14.3.0</se.lft.ver>
+        <lft.ver>14.3.0</lft.ver>
+        -->
+        <junit.ver>RELEASE</junit.ver>
+        <se.ver>RELEASE</se.ver>
+        <se.lft.ver>RELEASE</se.lft.ver> <!-- the leanft selenium extension that ships with LeanFT -->
+        <lft.ver>RELEASE</lft.ver>
+    </properties>
     <dependencies>
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
-            <version>4.12</version>
+            <version>${junit.ver}</version>
         </dependency>
 
         <dependency>
             <groupId>org.seleniumhq.selenium</groupId>
             <artifactId>selenium-java</artifactId>
-            <version>2.53.1</version>
+            <version>${se.ver}</version>
         </dependency>
 
         <dependency>
             <groupId>com.hpe.lft</groupId>
             <artifactId>selenium-sdk</artifactId>
-            <version>14.3.0</version>
+            <version>${se.lft.ver}</version>
         </dependency>
+
+        <!-- open sourced version of the lft for selenium extentions -->
+        <!--dependency>
+            <groupId>com.microfocus.adm.leanft</groupId>
+            <artifactId>leanft-selenium-java-sdk</artifactId>
+            <version>1.0</version>
+        </dependency-->
 
         <!-- for access to the LeanFT reports -->
         <dependency>
             <groupId>com.hp.lft</groupId>
             <artifactId>sdk</artifactId>
-            <version>14.3.0</version>
+            <version>${lft.ver}</version>
         </dependency>
         <dependency>
             <groupId>com.hp.lft</groupId>
             <artifactId>report</artifactId>
-            <version>14.3.0</version>
+            <version>${lft.ver}</version>
         </dependency>
     </dependencies>
 
