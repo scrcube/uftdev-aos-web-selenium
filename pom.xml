@@ -23,19 +23,19 @@
         <dependency>
             <groupId>com.hpe.lft</groupId>
             <artifactId>selenium-sdk</artifactId>
-            <version>RELEASE</version>
+            <version>14.3.0</version>
         </dependency>
 
         <!-- for access to the LeanFT reports -->
         <dependency>
             <groupId>com.hp.lft</groupId>
             <artifactId>sdk</artifactId>
-            <version>RELEASE</version>
+            <version>14.3.0</version>
         </dependency>
         <dependency>
             <groupId>com.hp.lft</groupId>
             <artifactId>report</artifactId>
-            <version>RELEASE</version>
+            <version>14.3.0</version>
         </dependency>
     </dependencies>
 

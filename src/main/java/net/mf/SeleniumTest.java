@@ -22,9 +22,14 @@ import java.net.URI;
 import java.util.regex.Pattern;
 
 public class SeleniumTest  {
-    private static final String ADV_WEBSITE  = "insert website here";
-    private static final String ADV_LOGIN    = "insert login name here";
-    private static final String ADV_PASSWORD = "insert password here";
+    // This script was created against AOS 1.1.3.  Since it uses Xpath, you may need to update the script
+    // if using against a different version.
+    private static final String ADV_WEBSITE  = "http://nimbusserver.aos.com:8000/#/";
+    //private static final String ADV_WEBSITE  = "http://www.advantageonlineshopping.com";
+
+    //You will need to have an account created in AOS and will need to supply the credentials
+    private static final String ADV_LOGIN    = "mercury1"; //"insert login name here";
+    private static final String ADV_PASSWORD = "Password1"; //"insert password here";
 
     private static WebDriver driver;
     public SeleniumTest() {
@@ -33,12 +38,12 @@ public class SeleniumTest  {
 
     @BeforeClass
     public static void setUpBeforeClass() throws Exception {
-        System.setProperty("webdriver.chrome.driver", "/opt/selenium/2.27/chromedriver");
+        System.setProperty("webdriver.chrome.driver", "./2.37/chromedriver");
         driver = new ChromeDriver();
 
         // The following is what is needed to add the LeanFT reporting to your custom test framework.
         // In this case a basic Selenium enabled test using the Junit framework
-        // This is base on the LeanFT 14.02 release https://admhelp.microfocus.com/leanft/en/latest/HelpCenter/Content/HowTo/CustomFrameworks.htm
+        // This is base on the LeanFT 14.03 release https://admhelp.microfocus.com/leanft/en/latest/HelpCenter/Content/HowTo/CustomFrameworks.htm
         try{
             ModifiableSDKConfiguration config = new ModifiableSDKConfiguration();
             config.setServerAddress(new URI("ws://localhost:5095"));
@@ -78,15 +83,16 @@ public class SeleniumTest  {
     @Test
     public void corndog() throws Exception {
         driver.get(ADV_WEBSITE);
+
         Reporter.reportEvent("Open Website", "Opening website: "+ADV_WEBSITE);
 
-        driver.manage().window().maximize();
+        //driver.manage().window().maximize();
         WebDriverWait wait = new WebDriverWait(driver, 10);
 
         //Login to Advantage
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("/html/body/header/nav/ul/li[2]/a")));
-        Utils.highlight(driver.findElement(By.xpath("/html/body/header/nav/ul/li[2]/a")), 1000);
-        driver.findElement(By.xpath("/html/body/header/nav/ul/li[2]/a")).click();
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("/html/body/header/nav/ul/li[3]/a/a")));
+        Utils.highlight(driver.findElement(By.xpath("/html/body/header/nav/ul/li[3]/a/a")), 3000);
+        driver.findElement(By.xpath("/html/body/header/nav/ul/li[3]/a/a")).click();
 
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("/html/body/login-modal/div/div/div[3]/sec-form/sec-view[1]/div/input")));
         Utils.highlight(driver.findElement(By.xpath("/html/body/login-modal/div/div/div[3]/sec-form/sec-view[1]/div/input")), 1000);
@@ -97,8 +103,9 @@ public class SeleniumTest  {
         driver.findElement(By.xpath("/html/body/login-modal/div/div/div[3]/sec-form/sec-view[2]/div/input")).sendKeys(ADV_PASSWORD);
 
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.visibleText("SIGN IN")));
-        Utils.highlight(driver.findElement(By.visibleText("SIGN IN")), 1000);
+        Utils.highlight(driver.findElement(By.visibleText("SIGN IN")), 3000);
         driver.findElement(By.visibleText("SIGN IN")).click();
+        Thread.sleep(2000);
 
         //Click on Tablets
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.visibleText("TABLETS")));
@@ -111,6 +118,7 @@ public class SeleniumTest  {
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.visibleText("HP Pro Tablet 608 G1")));
         Utils.highlight(driver.findElement(By.visibleText("HP Pro Tablet 608 G1")), 1000);
         driver.findElement(By.visibleText("HP Pro Tablet 608 G1")).click();
+        Thread.sleep(3000);
 
         //Add Tablet to cart
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.visibleText("ADD TO CART")));
@@ -127,14 +135,26 @@ public class SeleniumTest  {
         Utils.highlight(driver.findElement(By.visibleText("NEXT")), 1000);
         driver.findElement(By.visibleText("NEXT")).click();
 
+        String path ="//*[@id=\"paymentMethod\"]/div/div[2]/sec-form/sec-view[1]/div/input";
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(path)));
+        Utils.highlight(driver.findElement(By.xpath(path)), 1000);
+        driver.findElement(By.xpath(path)).clear();
+        driver.findElement(By.xpath(path)).sendKeys("mercury1");
+
+        path = "//*[@id=\"paymentMethod\"]/div/div[2]/sec-form/sec-view[2]/div/input";
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(path)));
+        Utils.highlight(driver.findElement(By.xpath(path)), 1000);
+        driver.findElement(By.xpath(path)).clear();
+        driver.findElement(By.xpath(path)).sendKeys("Password1");
+
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.visibleText("PAY NOW")));
         Utils.highlight(driver.findElement(By.visibleText("PAY NOW")), 1000);
         driver.findElement(By.visibleText("PAY NOW")).click();
 
         //Logout of Advantage
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("/html/body/header/nav/ul/li[2]/a")));
-        Utils.highlight(driver.findElement(By.xpath("/html/body/header/nav/ul/li[2]/a")), 1000);
-        driver.findElement(By.xpath("/html/body/header/nav/ul/li[2]/a")).click();
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("menuUser")));
+        Utils.highlight(driver.findElement(By.id("menuUser")), 1000);
+        driver.findElement(By.id("menuUser")).click();
 
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.visibleText("Sign out")));
         Utils.highlight(driver.findElement(By.visibleText("Sign out")), 1000);
