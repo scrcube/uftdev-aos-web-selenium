@@ -5,39 +5,31 @@ This project assumes you have followed the LeanFT set up instructions found on h
 For adding to a local .m2 cache when these jars are not on your internal maven repo, I use the following lines either from a command line or from with in the terminal window (in my case the IntelliJ Terminal window)
 
 ### Windows
-mvn install:install-file -Dfile="C:\Program Files (x86)\HP\Unified Functional Testing\Selenium SDK\Java\com.hpe.lft.selenium.jar" -DgroupId=com.hpe.lft -DartifactId=selenium-sdk -Dversion=14.1.0 -Dpackaging=jar
+mvn install:install-file -Dfile="C:\Program Files (x86)\HP\Unified Functional Testing\Selenium SDK\Java\com.hpe.lft.selenium.jar" -DgroupId=com.hpe.lft -DartifactId=selenium-sdk -Dversion=14.3.0 -Dpackaging=jar
 
-mvn install:install-file -Dfile="C:\Program Files (x86)\HP\Unified Functional Testing\Selenium SDK\Java\com.hpe.lft.selenium-javadoc.jar" -DgroupId=com.hpe.lft -DartifactId=selenium-sdk -Dversion=14.1.0 -Dpackaging=jar -Dclassifier=Javadoc
+mvn install:install-file -Dfile="C:\Program Files (x86)\HP\Unified Functional Testing\Selenium SDK\Java\com.hpe.lft.selenium-javadoc.jar" -DgroupId=com.hpe.lft -DartifactId=selenium-sdk -Dversion=14.3.0 -Dpackaging=jar -Dclassifier=Javadoc
 
 ### Unix
-mvn install:install-file -Dfile="/opt/leanft/selenium-sdk/Java/com.hpe.lft.selenium.jar" -DgroupId=com.hpe.lft -DartifactId=selenium-sdk -Dversion=14.1.0 -Dpackaging=jar
+mvn install:install-file -Dfile="/opt/leanft/selenium-sdk/Java/com.hpe.lft.selenium.jar" -DgroupId=com.hpe.lft -DartifactId=selenium-sdk -Dversion=14.3.0 -Dpackaging=jar
 
-mvn install:install-file -Dfile="/opt/leanft/selenium-sdk/Java/com.hpe.lft.selenium-javadoc.jar" -DgroupId=com.hpe.lft -DartifactId=selenium-sdk -Dversion=14.1.0 -Dpackaging=jar -Dclassifier=Javadoc
+mvn install:install-file -Dfile="/opt/leanft/selenium-sdk/Java/com.hpe.lft.selenium-javadoc.jar" -DgroupId=com.hpe.lft -DartifactId=selenium-sdk -Dversion=14.3.0 -Dpackaging=jar -Dclassifier=Javadoc
 
-And you should already see this in your pom.xml if you created the project from the templates
-
-```
-<dependency>
-     <groupId>org.seleniumhq.selenium</groupId>
-     <artifactId>selenium-java</artifactId>
-     <version>2.53.1</version>
-<dependency>
-
-
-<dependency>
-     <groupId>com.hpe.lft</groupId>
-     <artifactId>selenium-sdk</artifactId>
-     <version>14.1.0</version>
-<dependency>
-```
-The script has been modified to make use of the released version of the com.hpe.lft.selenium-sdk file
+This sample script uses the LeanFT for Selenium extentions that ship with LeanFT.  I have placed the open source version of the extentions in the pom file and commented them out for people to see.
 
 ```
-<dependency>
-     <groupId>com.hpe.lft</groupId>
-     <artifactId>selenium-sdk</artifactId>
-     <version>RELEASE</version>
-<dependency>
+        <dependency>
+            <groupId>com.microfocus.adm.leanft</groupId>
+            <artifactId>leanft-selenium-java-sdk</artifactId>
+            <version>1.0</version>
+        </dependency>
+```
+The script has been modified to make use of the released version of specific libraries.  If you need to use different versions, then modify this section of the pom.xml appropriately.
+
+```
+        <junit.ver>RELEASE</junit.ver>
+        <se.ver>RELEASE</se.ver>
+        <se.lft.ver>RELEASE</se.lft.ver>
+        <lft.ver>RELEASE</lft.ver>
 ```
 
 ### getDrivers.sh
@@ -48,8 +40,9 @@ The script assumes your chromedriver is in the /opt/selenium/<VER> folder.  If y
 To use the getDriver.sh, create the directory /opt/selenium and copy getDriver.sh to the folder and then run:
 
 ```
-./getDrivers.sh 2.27
+./getDrivers.sh 2.37
 ```
+This script was last updated and verified using the chromedriver 2.37
 
 If you are using the IntelliJ container to run this test, you will need to perform the above steps inside the IntelliJ container.
 
