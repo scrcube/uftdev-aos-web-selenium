@@ -38,7 +38,9 @@ public class SeleniumTest  {
 
     @BeforeClass
     public static void setUpBeforeClass() throws Exception {
-        System.setProperty("webdriver.chrome.driver", "./2.37/chromedriver");
+        // If you don't want to specify the path to the chrome driver, you will need to make sure it is part of the system path
+        System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir")+"/2.37/chromedriver");
+        System.out.println("Using driver: "+System.getProperty("user.dir")+"/2.37/chromedriver");
         driver = new ChromeDriver();
 
         // The following is what is needed to add the LeanFT reporting to your custom test framework.
