@@ -33,11 +33,11 @@ The script has been modified to make use of the released version of specific lib
 ```
 
 ### getDrivers.sh
-The getDrivers.sh is a small utility to aid in getting the selenium driver required for this script.  This script was created to use the Selenium Chrome driver and as of the time of this writing, the driver 2.27 was the last driver version tested to work.
+The getDrivers.sh is a small utility to aid in getting the selenium driver required for this script.  This script was created to use the Selenium Chrome driver and as of the time of this writing, the driver 2.37 was the last driver version tested to work.
 
-The script assumes your chromedriver is in the /opt/selenium/<VER> folder.  If you will be placing it in a folder other than that, then you will need to edit the test.
+The script assumes your chromedriver is in the Lft4Se/<VER> folder.  If you will be placing it in a folder other than that, then you will need to edit the test.
 
-To use the getDriver.sh, create the directory /opt/selenium and copy getDriver.sh to the folder and then run:
+To use the getDriver.sh, cd to the Lft4Se folder and then run (enter a different version for the chrome driver if you do not want to use 2.37):
 
 ```
 ./getDrivers.sh 2.37
