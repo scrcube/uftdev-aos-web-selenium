@@ -8,16 +8,10 @@
     <description>LeanFT Selenium JUnit Test</description>
 
     <properties>
-        <!-- These were the original versions of the libraries used in development of the script
         <junit.ver>4.12</junit.ver>
         <se.ver>2.53.1</se.ver>
-        <se.lft.ver>14.3.0</se.lft.ver>
+        <se.lft.ver>14.3.0</se.lft.ver> <!-- the leanft selenium extension that ships with LeanFT -->
         <lft.ver>14.3.0</lft.ver>
-        -->
-        <junit.ver>RELEASE</junit.ver>
-        <se.ver>RELEASE</se.ver>
-        <se.lft.ver>RELEASE</se.lft.ver> <!-- the leanft selenium extension that ships with LeanFT -->
-        <lft.ver>RELEASE</lft.ver>
     </properties>
     <dependencies>
         <dependency>

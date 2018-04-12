@@ -23,13 +23,14 @@ This sample script uses the LeanFT for Selenium extentions that ship with LeanFT
             <version>1.0</version>
         </dependency>
 ```
-The script has been modified to make use of the released version of specific libraries.  If you need to use different versions, then modify this section of the pom.xml appropriately.
+
+Check which versions of libraries you have available and make the appropriate changes in the pom.xml
 
 ```
-        <junit.ver>RELEASE</junit.ver>
-        <se.ver>RELEASE</se.ver>
-        <se.lft.ver>RELEASE</se.lft.ver>
-        <lft.ver>RELEASE</lft.ver>
+        <junit.ver>4.12</junit.ver>
+        <se.ver>2.53.1</se.ver>
+        <se.lft.ver>14.3.0</se.lft.ver>
+        <lft.ver>14.3.0</lft.ver>
 ```
 
 ### getDrivers.sh
