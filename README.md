@@ -42,6 +42,8 @@ To use the getDriver.sh, cd to the Lft4Se folder and then run (enter a different
 ```
 ./getDrivers.sh 2.37
 ```
+You can also add the chromedriver to your system path and the script will work.
+
 This script was last updated and verified using the chromedriver 2.37
 
 If you are using the IntelliJ container to run this test, you will need to perform the above steps inside the IntelliJ container.

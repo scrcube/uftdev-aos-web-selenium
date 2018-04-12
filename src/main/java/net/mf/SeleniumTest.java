@@ -1,5 +1,6 @@
 package net.mf;
 
+import java.io.File;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -38,9 +39,16 @@ public class SeleniumTest  {
 
     @BeforeClass
     public static void setUpBeforeClass() throws Exception {
-        // If you don't want to specify the path to the chrome driver, you will need to make sure it is part of the system path
-        System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir")+"/2.37/chromedriver");
-        System.out.println("Using driver: "+System.getProperty("user.dir")+"/2.37/chromedriver");
+        File f = new File(System.getProperty("user.dir")+"/2.37/chromedriver");
+        if(f.exists() && !f.isDirectory()) {
+            // If you don't want to specify the path to the chrome driver, you will need to make sure it is part of the system path
+            System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir")+"/2.37/chromedriver");
+            System.out.println("Using driver: "+System.getProperty("user.dir")+"/2.37/chromedriver");
+        } else {
+            System.out.println("Chrome driver not found in: "+System.getProperty("user.dir")+"/2.37/chromedriver");
+            System.out.println("Will attempt use the chrome driver that is in the system path.  If one doesn't exist, you will get an error on execution");
+        }
+
         driver = new ChromeDriver();
 
         // The following is what is needed to add the LeanFT reporting to your custom test framework.
