@@ -29,8 +29,10 @@ public class SeleniumTest  {
     //private static final String ADV_WEBSITE  = "http://www.advantageonlineshopping.com";
 
     //You will need to have an account created in AOS and will need to supply the credentials
-    private static final String ADV_LOGIN    = "mercury1"; //"insert login name here";
-    private static final String ADV_PASSWORD = "Password1"; //"insert password here";
+    private static final String ADV_LOGIN    = "Mercury"; //"insert login name here";
+    private static final String ADV_PASSWORD = "Mercury"; //"insert password here";
+    private static final String DRIVER_VER = "2.41";
+    private static final String DRIVER_PATH="/"+DRIVER_VER+"/chromedriver";
 
     private static WebDriver driver;
     public SeleniumTest() {
@@ -39,13 +41,13 @@ public class SeleniumTest  {
 
     @BeforeClass
     public static void setUpBeforeClass() throws Exception {
-        File f = new File(System.getProperty("user.dir")+"/2.37/chromedriver");
+        File f = new File(System.getProperty("user.dir")+DRIVER_PATH);
         if(f.exists() && !f.isDirectory()) {
             // If you don't want to specify the path to the chrome driver, you will need to make sure it is part of the system path
-            System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir")+"/2.37/chromedriver");
-            System.out.println("Using driver: "+System.getProperty("user.dir")+"/2.37/chromedriver");
+            System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir")+DRIVER_PATH);
+            System.out.println("Using driver: "+System.getProperty("user.dir")+DRIVER_PATH);
         } else {
-            System.out.println("Chrome driver not found in: "+System.getProperty("user.dir")+"/2.37/chromedriver");
+            System.out.println("Chrome driver not found in: "+System.getProperty("user.dir")+DRIVER_PATH);
             System.out.println("Will attempt use the chrome driver that is in the system path.  If one doesn't exist, you will get an error on execution");
         }
 
@@ -149,13 +151,13 @@ public class SeleniumTest  {
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(path)));
         Utils.highlight(driver.findElement(By.xpath(path)), 1000);
         driver.findElement(By.xpath(path)).clear();
-        driver.findElement(By.xpath(path)).sendKeys("mercury1");
+        driver.findElement(By.xpath(path)).sendKeys(ADV_LOGIN);
 
         path = "//*[@id=\"paymentMethod\"]/div/div[2]/sec-form/sec-view[2]/div/input";
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(path)));
         Utils.highlight(driver.findElement(By.xpath(path)), 1000);
         driver.findElement(By.xpath(path)).clear();
-        driver.findElement(By.xpath(path)).sendKeys("Password1");
+        driver.findElement(By.xpath(path)).sendKeys(ADV_PASSWORD+"1");
 
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.visibleText("PAY NOW")));
         Utils.highlight(driver.findElement(By.visibleText("PAY NOW")), 1000);

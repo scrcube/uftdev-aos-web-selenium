@@ -10,8 +10,9 @@
     <properties>
         <junit.ver>4.12</junit.ver>
         <se.ver>2.53.1</se.ver>
-        <se.lft.ver>14.3.0</se.lft.ver> <!-- the leanft selenium extension that ships with LeanFT -->
-        <lft.ver>14.3.0</lft.ver>
+        <!-- deprecated -->
+        <!--<se.lft.ver>14.3.0</se.lft.ver>--> <!-- the leanft selenium extension that ships with LeanFT -->
+        <lft.ver>14.50.0</lft.ver>
     </properties>
     <dependencies>
         <dependency>
@@ -26,18 +27,20 @@
             <version>${se.ver}</version>
         </dependency>
 
-        <dependency>
+        <!-- lft still ships the artifact with lft but we have chosen to use the open source jar from maven.org-->
+        <!-- deprecated -->
+        <!--<dependency>
             <groupId>com.hpe.lft</groupId>
             <artifactId>selenium-sdk</artifactId>
             <version>${se.lft.ver}</version>
-        </dependency>
+        </dependency>-->
 
         <!-- open sourced version of the lft for selenium extentions -->
-        <!--dependency>
+        <dependency>
             <groupId>com.microfocus.adm.leanft</groupId>
             <artifactId>leanft-selenium-java-sdk</artifactId>
-            <version>1.0</version>
-        </dependency-->
+            <version>RELEASE</version>
+        </dependency>
 
         <!-- for access to the LeanFT reports -->
         <dependency>
@@ -71,8 +74,8 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <configuration>
-                    <source>1.7</source>
-                    <target>1.7</target>
+                    <source>1.8</source>
+                    <target>1.8</target>
                 </configuration>
             </plugin>
             <plugin>
@@ -86,6 +89,21 @@
                         <version>2.19.1</version>
                     </dependency>
                 </dependencies>
+            </plugin>
+            <plugin>
+                <artifactId>maven-clean-plugin</artifactId>
+                <version>3.1.0</version>
+                <configuration>
+                    <filesets>
+                        <fileset>
+                            <directory>${basedir}</directory>
+                            <includes>
+                                <include>RunResults/</include>
+                            </includes>
+                            <followSymlinks>false</followSymlinks>
+                        </fileset>
+                    </filesets>
+                </configuration>
             </plugin>
         </plugins>
         <testSourceDirectory>src/main/java</testSourceDirectory>
