@@ -1,6 +1,8 @@
 # Lft4Se
 This project assumes you have followed the LeanFT set up instructions found on https://admhelp.microfocus.com/leanft/en/14.50/HelpCenter/Content/HowTo/Sel_LeanFT4SelT.htm
 
+**NOTE:** You need to be connected to the internet the first time this is executed so the chromewebdriver gets cached to your .m2 cache
+
 This sample script uses the LeanFT for Selenium extensions available https://search.maven.org/search?q=a:leanft-selenium-java-sdk
 ```
         <dependency>
@@ -16,23 +18,17 @@ Check which versions of libraries you have available and make the appropriate ch
         <junit.ver>4.12</junit.ver>
         <se.ver>2.53.1</se.ver>
         <lft.ver>14.50.0</lft.ver>
+        <webdrivermanager.ver>3.0.0</webdrivermanager.ver>
+        <slf4j.ver>1.7.25</slf4j.ver>
 ```
 
-### getDrivers.sh
-The getDrivers.sh is a small utility to aid in getting the selenium driver required for this script.  This script was created to use the Selenium Chrome driver and as of the time of this writing, the driver 2.37 was the last driver version tested to work.
+### Selenium Web Driver Manager
+This script makes use of a utility that simplifies getting and setting the webdriver (Chrome in this case).  Using this approach makes the assumption that you have access to the internet when this script is run the first time so the drivers can automatically be downloaded and added to your local .m2 cache.
 
-The script assumes your chromedriver is in the lft4se/<VER> folder.  If you will be placing it in a folder other than that, then you will need to edit the test.
+More details about the utility can be found:
 
-To use the getDriver.sh, cd to the lft4se folder and then run (enter a different version for the chrome driver if you do not want to use 2.41):
-
-```
-./getDrivers.sh 2.41
-```
-You can also add the chromedriver to your system path and the script will work.
-
-This script was last updated and verified using the chromedriver 2.41
-
-If you are using the IntelliJ container to run this test, you will need to perform the above steps inside the IntelliJ container.
+* https://github.com/bonigarcia/webdrivermanager#webdrivermanager-as-java-dependency
+* https://stackoverflow.com/questions/7450416/selenium-2-chrome-driver
 
 #### Note for execution from command line (the below is for reference and i have not validated on this release since we are using Maven all the time now)
 java -cp .;junit-4.12.jar;presales-1.0-SNAPSHOT.jar;hamcrest-core-1.3.jar;selenium-server-standalone-2.53.1.jar;com.hpe.lft.selenium.jar org.junit.runner.JUnitCore SeleniumTest
