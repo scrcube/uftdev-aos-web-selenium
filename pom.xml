@@ -10,11 +10,10 @@
     <properties>
         <junit.ver>4.12</junit.ver>
         <se.ver>2.53.1</se.ver>
-        <!-- deprecated -->
-        <!--<se.lft.ver>14.3.0</se.lft.ver>--> <!-- the leanft selenium extension that ships with LeanFT -->
-        <lft.ver>14.50.0</lft.ver>
         <webdrivermanager.ver>3.0.0</webdrivermanager.ver>
         <slf4j.ver>1.7.25</slf4j.ver>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <leanft.version>RELEASE</leanft.version>
     </properties>
     <dependencies>
         <dependency>
@@ -29,14 +28,6 @@
             <version>${se.ver}</version>
         </dependency>
 
-        <!-- lft still ships the artifact with lft but we have chosen to use the open source jar from maven.org-->
-        <!-- deprecated -->
-        <!--<dependency>
-            <groupId>com.hpe.lft</groupId>
-            <artifactId>selenium-sdk</artifactId>
-            <version>${se.lft.ver}</version>
-        </dependency>-->
-
         <!-- open sourced version of the lft for selenium extentions -->
         <dependency>
             <groupId>com.microfocus.adm.leanft</groupId>
@@ -48,12 +39,12 @@
         <dependency>
             <groupId>com.hp.lft</groupId>
             <artifactId>sdk</artifactId>
-            <version>${lft.ver}</version>
+            <version>${leanft.version}</version>
         </dependency>
         <dependency>
             <groupId>com.hp.lft</groupId>
             <artifactId>report</artifactId>
-            <version>${lft.ver}</version>
+            <version>${leanft.version}</version>
         </dependency>
         <dependency>
             <!-- https://github.com/bonigarcia/webdrivermanager#webdrivermanager-as-java-dependency
