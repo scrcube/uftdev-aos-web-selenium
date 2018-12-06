@@ -17,6 +17,7 @@ hs_err_pid*
 # flynn
 .idea/*
 !.idea/misc.xml
+!.idea/modules/xml
 *.iml
 
 # User-specific stuff:
