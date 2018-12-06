@@ -17,9 +17,9 @@ Check which versions of libraries you have available and make the appropriate ch
 ```
         <junit.ver>4.12</junit.ver>
         <se.ver>2.53.1</se.ver>
-        <lft.ver>14.50.0</lft.ver>
         <webdrivermanager.ver>3.0.0</webdrivermanager.ver>
         <slf4j.ver>1.7.25</slf4j.ver>
+        <leanft.version>RELEASE</leanft.version>
 ```
 
 ### Selenium Web Driver Manager

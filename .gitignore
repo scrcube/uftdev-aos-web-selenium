@@ -15,7 +15,9 @@ hs_err_pid*
 # Reference: https://intellij-support.jetbrains.com/hc/en-us/articles/206544839
 
 # flynn
-.idea/
+.idea/*
+!.idea/misc.xml
+!.idea/modules.xml
 *.iml
 
 # User-specific stuff:

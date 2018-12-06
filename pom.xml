@@ -12,8 +12,8 @@
         <se.ver>2.53.1</se.ver>
         <webdrivermanager.ver>3.0.0</webdrivermanager.ver>
         <slf4j.ver>1.7.25</slf4j.ver>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <leanft.version>RELEASE</leanft.version>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
     <dependencies>
         <dependency>
