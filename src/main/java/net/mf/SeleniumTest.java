@@ -46,7 +46,7 @@ public class SeleniumTest  {
         WebDriverManager.chromedriver().forceCache();
         WebDriverManager.chromedriver().setup();
         ChromeOptions options = new ChromeOptions();
-        options.addArguments("disable-infobars","--no-sandbox");
+        options.addArguments("disable-infobars");
         driver = new ChromeDriver(options);
 
         // The following is what is needed to add the LeanFT reporting to your custom test framework.
