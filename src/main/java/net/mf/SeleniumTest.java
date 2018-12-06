@@ -89,7 +89,7 @@ public class SeleniumTest  {
     }
 
     @Test
-    public void corndog() throws Exception {
+    public void purchaseTablet() throws Exception {
         driver.get(ADV_WEBSITE);
 
         Reporter.reportEvent("Open Website", "Opening website: "+ADV_WEBSITE);
