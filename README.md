@@ -1,4 +1,6 @@
 # aos-web-lft4se
+An example of running a Selenium Test through LeanFT
+
 This project assumes you have followed the LeanFT set up instructions found on https://admhelp.microfocus.com/leanft/en/14.50/HelpCenter/Content/HowTo/Sel_LeanFT4SelT.htm
 
 **NOTE:** You need to be connected to the internet the first time this is executed so the chromewebdriver gets cached to your .m2 cache
