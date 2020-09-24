@@ -97,19 +97,22 @@ public class SeleniumTest  {
         //driver.manage().window().maximize();
         WebDriverWait wait = new WebDriverWait(driver, 10);
 
-        //Login to Advantage
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("/html/body/header/nav/ul/li[3]/a/a")));
-        Utils.highlight(driver.findElement(By.xpath("/html/body/header/nav/ul/li[3]/a/a")), 3000);
-        driver.findElement(By.xpath("/html/body/header/nav/ul/li[3]/a/a")).click();
+        // Login to Advantage
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id = 'hrefUserIcon']/*[@id = 'menuUser']")));
+        Utils.highlight(driver.findElement(By.xpath("//*[@id = 'hrefUserIcon']/*[@id = 'menuUser']")), 3000);
+        driver.findElement(By.xpath("//*[@id = 'hrefUserIcon']/*[@id = 'menuUser']")).click();
 
+        // Type Username
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("/html/body/login-modal/div/div/div[3]/sec-form/sec-view[1]/div/input")));
         Utils.highlight(driver.findElement(By.xpath("/html/body/login-modal/div/div/div[3]/sec-form/sec-view[1]/div/input")), 1000);
         driver.findElement(By.xpath("/html/body/login-modal/div/div/div[3]/sec-form/sec-view[1]/div/input")).sendKeys(ADV_LOGIN);
 
+        // Type Password
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("/html/body/login-modal/div/div/div[3]/sec-form/sec-view[2]/div/input")));
         Utils.highlight(driver.findElement(By.xpath("/html/body/login-modal/div/div/div[3]/sec-form/sec-view[2]/div/input")), 1000);
-        driver.findElement(By.xpath("/html/body/login-modal/div/div/div[3]/sec-form/sec-view[2]/div/input")).sendKeys(ADV_PASSWORD);
+        driver.findElement(By.xpath("/html/body/login-modal/div/div/div[3]/sec-form/sec-view[2]/div/inputs")).sendKeys(ADV_PASSWORD);
 
+        // Sign in
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.visibleText("SIGN IN")));
         Utils.highlight(driver.findElement(By.visibleText("SIGN IN")), 3000);
         driver.findElement(By.visibleText("SIGN IN")).click();
