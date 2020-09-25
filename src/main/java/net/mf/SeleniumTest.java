@@ -98,6 +98,8 @@ public class SeleniumTest  {
         WebDriverWait wait = new WebDriverWait(driver, 10);
 
         // Login to Advantage
+        // BRANCH!!
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id = 'hrefUserIcon']/*[@id = 'menuUser']")));
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id = 'hrefUserIcon']/*[@id = 'menuUser']")));
         Utils.highlight(driver.findElement(By.xpath("//*[@id = 'hrefUserIcon']/*[@id = 'menuUser']")), 3000);
         driver.findElement(By.xpath("//*[@id = 'hrefUserIcon']/*[@id = 'menuUser']")).click();
@@ -110,7 +112,7 @@ public class SeleniumTest  {
         // Type Password
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("/html/body/login-modal/div/div/div[3]/sec-form/sec-view[2]/div/input")));
         Utils.highlight(driver.findElement(By.xpath("/html/body/login-modal/div/div/div[3]/sec-form/sec-view[2]/div/input")), 1000);
-        driver.findElement(By.xpath("/html/body/login-modal/div/div/div[3]/sec-form/sec-view[2]/div/inputs")).sendKeys(ADV_PASSWORD);
+        driver.findElement(By.xpath("/html/body/login-modal/div/div/div[3]/sec-form/sec-view[2]/div/input")).sendKeys(ADV_PASSWORD);
 
         // Sign in
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.visibleText("SIGN IN")));
