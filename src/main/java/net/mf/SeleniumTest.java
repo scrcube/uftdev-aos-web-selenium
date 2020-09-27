@@ -94,7 +94,7 @@ public class SeleniumTest  {
 
         Reporter.reportEvent("Open Website", "Opening website: "+ADV_WEBSITE);
 
-        //driver.manage().window().maximize();
+        driver.manage().window().maximize();
         WebDriverWait wait = new WebDriverWait(driver, 10);
 
         // Login to Advantage Online Shopping
@@ -144,42 +144,61 @@ public class SeleniumTest  {
         //Add Tablet to cart
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.visibleText("ADD TO CART")));
         Utils.highlight(driver.findElement(By.visibleText(("ADD TO CART"))), 1000);
-        driver.findElement(By.visibleText("ADD TO CART")).click();
+        img = Utils.getSnapshot(driver.findElement(By.xpath("//button[@name='save_to_cart']")));
+        Reporter.reportEvent("Add To Cart","Found", Status.Passed, img);
+        driver.findElement(By.xpath("//button[@name='save_to_cart']")).click();
 
         //Go to Checkout
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.visibleText(Pattern.compile("CHECKOUT \\(\\$*"))));
         Utils.highlight(driver.findElement(By.visibleText(Pattern.compile("CHECKOUT \\(\\$*"))), 1000);
+        img = Utils.getSnapshot(driver.findElement(By.visibleText(Pattern.compile("CHECKOUT \\(\\$*"))));
+        Reporter.reportEvent("Go To Checkout","Found", Status.Passed, img);
         driver.findElement(By.visibleText(Pattern.compile("CHECKOUT \\(\\$*"))).click();
         Thread.sleep(3000);
 
-        //Checkout
+        //Checkout Next
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.visibleText("NEXT")));
         Utils.highlight(driver.findElement(By.visibleText("NEXT")), 1000);
+        img = Utils.getSnapshot(driver.findElement(By.visibleText("NEXT")));
+        Reporter.reportEvent("Checkout Next","Found", Status.Passed, img);
         driver.findElement(By.visibleText("NEXT")).click();
 
-        String path ="//*[@id=\"paymentMethod\"]/div/div[2]/sec-form/sec-view[1]/div/input";
+        String path ="//*[@name='safepay_username']";
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(path)));
         Utils.highlight(driver.findElement(By.xpath(path)), 1000);
+        img = Utils.getSnapshot(driver.findElement(By.xpath(path)));
+        Reporter.reportEvent("Type SafePay username","Found", Status.Passed, img);
         driver.findElement(By.xpath(path)).clear();
         driver.findElement(By.xpath(path)).sendKeys(ADV_LOGIN);
 
         path = "//*[@id=\"paymentMethod\"]/div/div[2]/sec-form/sec-view[2]/div/input";
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(path)));
         Utils.highlight(driver.findElement(By.xpath(path)), 1000);
+        img = Utils.getSnapshot(driver.findElement(By.xpath(path)));
+        Reporter.reportEvent("Type SafePay password","Found", Status.Passed, img);
         driver.findElement(By.xpath(path)).clear();
         driver.findElement(By.xpath(path)).sendKeys(ADV_PASSWORD+"1");
 
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.visibleText("PAY NOW")));
         Utils.highlight(driver.findElement(By.visibleText("PAY NOW")), 1000);
+        img = Utils.getSnapshot(driver.findElement(By.visibleText("PAY NOW")));
+        Reporter.reportEvent("Click PAY NOW","Found", Status.Passed, img);
         driver.findElement(By.visibleText("PAY NOW")).click();
 
         //Logout of Advantage
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("menuUser")));
         Utils.highlight(driver.findElement(By.id("menuUser")), 1000);
+        img = Utils.getSnapshot(driver.findElement(By.id("menuUser")));
+        Reporter.reportEvent("Click Menu Icon","Found", Status.Passed, img);
+        // Reporting Order Info
+        img = Utils.getSnapshot(driver.findElement(By.xpath("//*[@ng-show='paymentEnd']")));
+        Reporter.reportEvent("Order Info","Found", Status.Passed, img);
         driver.findElement(By.id("menuUser")).click();
 
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.visibleText("Sign out")));
         Utils.highlight(driver.findElement(By.visibleText("Sign out")), 1000);
+        img = Utils.getSnapshot(driver.findElement(By.visibleText("Sign out")));
+        Reporter.reportEvent("Sign Out","Found", Status.Passed, img);
         driver.findElement(By.visibleText("Sign out")).click();
 
         //Added sleep here to give time to see the selection
