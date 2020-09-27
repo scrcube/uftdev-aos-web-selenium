@@ -97,34 +97,40 @@ public class SeleniumTest  {
         //driver.manage().window().maximize();
         WebDriverWait wait = new WebDriverWait(driver, 10);
 
-        // Login to Advantage
-        // BRANCH!!
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id = 'hrefUserIcon']/*[@id = 'menuUser']")));
+        // Login to Advantage Online Shopping
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id = 'hrefUserIcon']/*[@id = 'menuUser']")));
         Utils.highlight(driver.findElement(By.xpath("//*[@id = 'hrefUserIcon']/*[@id = 'menuUser']")), 3000);
+        RenderedImage img = Utils.getSnapshot(driver.findElement(By.xpath("//*[@id = 'menuUserLink']")));
+        Reporter.reportEvent("Click Menu Icon","Found", Status.Passed, img);
         driver.findElement(By.xpath("//*[@id = 'hrefUserIcon']/*[@id = 'menuUser']")).click();
 
         // Type Username
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("/html/body/login-modal/div/div/div[3]/sec-form/sec-view[1]/div/input")));
         Utils.highlight(driver.findElement(By.xpath("/html/body/login-modal/div/div/div[3]/sec-form/sec-view[1]/div/input")), 1000);
+        img = Utils.getSnapshot(driver.findElement(By.xpath("/html/body/login-modal/div/div/div[3]/sec-form/sec-view[1]")));
+        Reporter.reportEvent("Type Username","Found", Status.Passed, img);
         driver.findElement(By.xpath("/html/body/login-modal/div/div/div[3]/sec-form/sec-view[1]/div/input")).sendKeys(ADV_LOGIN);
 
         // Type Password
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("/html/body/login-modal/div/div/div[3]/sec-form/sec-view[2]/div/input")));
         Utils.highlight(driver.findElement(By.xpath("/html/body/login-modal/div/div/div[3]/sec-form/sec-view[2]/div/input")), 1000);
+        img = Utils.getSnapshot(driver.findElement(By.xpath("/html/body/login-modal/div/div/div[3]/sec-form/sec-view[2]")));
+        Reporter.reportEvent("Type Password","Found", Status.Passed, img);
         driver.findElement(By.xpath("/html/body/login-modal/div/div/div[3]/sec-form/sec-view[2]/div/input")).sendKeys(ADV_PASSWORD);
 
         // Sign in
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.visibleText("SIGN IN")));
         Utils.highlight(driver.findElement(By.visibleText("SIGN IN")), 3000);
+        img = Utils.getSnapshot(driver.findElement(By.visibleText("SIGN IN")));
+        Reporter.reportEvent("SING IN","Found", Status.Passed, img);
         driver.findElement(By.visibleText("SIGN IN")).click();
         Thread.sleep(2000);
 
         //Click on Tablets
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.visibleText("TABLETS")));
         Utils.highlight(driver.findElement(By.visibleText("TABLETS")), 1000);
-        RenderedImage img = Utils.getSnapshot(driver.findElement(By.visibleText("TABLETS")));
-        Reporter.reportEvent("TABLETS","Found", Status.Passed, img);
+        img = Utils.getSnapshot(driver.findElement(By.xpath("//*[@id = 'tabletsImg']")));
+        Reporter.reportEvent("Tablets","Found", Status.Passed, img);
         driver.findElement(By.visibleText("TABLETS")).click();
 
         //Click on specific tablet
@@ -142,6 +148,7 @@ public class SeleniumTest  {
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.visibleText(Pattern.compile("CHECKOUT \\(\\$*"))));
         Utils.highlight(driver.findElement(By.visibleText(Pattern.compile("CHECKOUT \\(\\$*"))), 1000);
         driver.findElement(By.visibleText(Pattern.compile("CHECKOUT \\(\\$*"))).click();
+        Thread.sleep(3000);
 
         //Checkout
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.visibleText("NEXT")));
