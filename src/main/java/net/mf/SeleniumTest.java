@@ -197,7 +197,7 @@ public class SeleniumTest  {
 
         path = "//*[@role='link' and text()='Sign out']";
         // Comment Next Line To Fix
-        //path = "//*[text()='Sign out']";
+        path = "//*[text()='Sign out']";
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(path)));
         Utils.highlight(driver.findElement(By.xpath(path)), 1000);
         img = Utils.getSnapshot(driver.findElement(By.xpath(path)));
