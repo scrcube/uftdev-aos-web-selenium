@@ -136,6 +136,8 @@ public class SeleniumTest  {
         //Click on specific tablet
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.visibleText("HP Pro Tablet 608 G1")));
         Utils.highlight(driver.findElement(By.visibleText("HP Pro Tablet 608 G1")), 1000);
+        img = Utils.getSnapshot(driver.findElement(By.xpath("//img[@id='18']")));
+        Reporter.reportEvent("Click on Tablet","Found", Status.Passed, img);
         driver.findElement(By.visibleText("HP Pro Tablet 608 G1")).click();
         Thread.sleep(3000);
 
