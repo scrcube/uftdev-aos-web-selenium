@@ -171,7 +171,7 @@ public class SeleniumTest  {
         driver.findElement(By.xpath(path)).clear();
         driver.findElement(By.xpath(path)).sendKeys(ADV_LOGIN);
 
-        path = "//*[@id=\"paymentMethod\"]/div/div[2]/sec-form/sec-view[2]/div/input";
+        path = "//*[@name='safepay_password']";
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(path)));
         Utils.highlight(driver.findElement(By.xpath(path)), 1000);
         img = Utils.getSnapshot(driver.findElement(By.xpath(path)));
@@ -195,11 +195,14 @@ public class SeleniumTest  {
         Reporter.reportEvent("Order Info","Found", Status.Passed, img);
         driver.findElement(By.id("menuUser")).click();
 
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.visibleText("Sign out")));
-        Utils.highlight(driver.findElement(By.visibleText("Sign out")), 1000);
-        img = Utils.getSnapshot(driver.findElement(By.visibleText("Sign out")));
+        path = "//*[@role='link' and text()='Sign out']";
+        // Comment Next Line To Fix
+        path = "//*[text()='Sign out']";
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(path)));
+        Utils.highlight(driver.findElement(By.xpath(path)), 1000);
+        img = Utils.getSnapshot(driver.findElement(By.xpath(path)));
         Reporter.reportEvent("Sign Out","Found", Status.Passed, img);
-        driver.findElement(By.visibleText("Sign out")).click();
+        driver.findElement(By.xpath(path)).click();
 
         //Added sleep here to give time to see the selection
         Thread.sleep(3000);
